@@ -43,26 +43,21 @@ namespace Plutus.CustomControls
             }
 
             Color textColor = Color.Empty;
-            //if (colorList.Count > 0)
+            if ((this.SelectionMode != SelectionMode.None) && ((e.State & DrawItemState.Selected) != DrawItemState.Selected))
             {
-                if ((this.SelectionMode != SelectionMode.None) && ((e.State & DrawItemState.Selected) != DrawItemState.Selected))
-                {
-                    textColor = GetItemColor(e.Index);
+                textColor = GetItemColor(e.Index);
 
-                    if (textColor.IsEmpty)
-                    {
-                        textColor = base.ForeColor;
-                    }
-                }
-                else
+                if (textColor.IsEmpty)
                 {
-                    textColor = GetItemColor(e.Index);
+                    textColor = base.ForeColor;
                 }
             }
+            else
+            {
+                textColor = GetItemColor(e.Index);
+            }
 
-            string text = this.Items[e.Index].ToString();
-
-            TextRenderer.DrawText(e.Graphics, text, this.Font, rect, textColor, TextFormatFlags.GlyphOverhangPadding);
+            TextRenderer.DrawText(e.Graphics, Items[e.Index].ToString(), this.Font, rect, textColor, TextFormatFlags.GlyphOverhangPadding);
         }
 
         public void SetItemColor(int index, Color color)
@@ -71,9 +66,7 @@ namespace Plutus.CustomControls
             {
                 Color[] tempArray = new Color[index + 1];
                 colorList.CopyTo(tempArray, 0);
-                colorList = tempArray;
-
-                System.Diagnostics.Debug.WriteLine("Array size increased to " + (index + 1).ToString()); 
+                colorList = tempArray; 
             }
             colorList[index] = color;
         }

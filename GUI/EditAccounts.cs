@@ -199,7 +199,7 @@ namespace Plutus.GUI
                 }
                 else
                 {
-                    MessageBox.Show("Duplicate account name '" + nameTextBox.Text + "' found, added '1' to avoid clash", "Plutus: Duplicate Account Name");                    
+                    MessageBox.Show("Duplicate account name '" + nameTextBox.Text + "' found, added '1' to avoid clash", "Plutus: Account Name Duplicated");                    
                     nameTextBox.Text = nameTextBox.Text + "1";
                 }
             }
