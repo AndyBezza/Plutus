@@ -139,5 +139,20 @@ namespace Plutus.DAL
             }
             return null;
         }
+
+        internal List<Account> FindAccountsByCurrency(Currency currency, bool includeSuspendedAccounts)
+        {
+            List<Account> returnList = new List<Account>(); 
+
+            foreach (Account acc in accounts)
+            {
+                if ((acc._currency == currency) && (acc._isActive || includeSuspendedAccounts))
+                {
+                    returnList.Add(acc); 
+                }
+            }
+
+            return returnList;
+        }
     }
 }

@@ -13,7 +13,9 @@ namespace Plutus.CustomClasses
         private DateTime                _dateTime;
                                
         private decimal                 _originalPrice;
+        private Currency                _originalCurrency;
         private decimal                 _effectivePrice;
+        private Currency                _effectiveCurrency;
         private string                  _quickDescription;
         private string                  _additionalInformation;
         private bool                    _spreadOverMonth;
@@ -21,7 +23,9 @@ namespace Plutus.CustomClasses
         
         public Purchase(int                 iD,
                         decimal             originalPrice,
+                        Currency            originalCurrency,
                         decimal             effectivePrice,
+                        Currency            effectiveCurrency,
                         string              quickDescription,
                         string              additionalInformation,
                         bool                spreadOverMonth, 
@@ -32,7 +36,9 @@ namespace Plutus.CustomClasses
             _dateTime               = DateTime.Now; 
 
             _originalPrice          = originalPrice;
+            _originalCurrency       = originalCurrency;
             _effectivePrice         = effectivePrice;
+            _effectiveCurrency      = effectiveCurrency;
             _quickDescription       = quickDescription;
             _additionalInformation  = additionalInformation;
             _spreadOverMonth        = spreadOverMonth;

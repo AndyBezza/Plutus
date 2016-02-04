@@ -36,14 +36,14 @@
             this.nextButton = new System.Windows.Forms.Button();
             this.additionalInfoTextBox = new System.Windows.Forms.TextBox();
             this.quickDescriptionTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.currencyComboBox = new System.Windows.Forms.ComboBox();
+            this.originalCurrencyComboBox = new System.Windows.Forms.ComboBox();
             this.step2GroupBox = new System.Windows.Forms.GroupBox();
             this.backButton = new System.Windows.Forms.Button();
             this.doneButton = new System.Windows.Forms.Button();
+            this.effectiveCurrencyComboBox = new System.Windows.Forms.ComboBox();
+            this.availableAccountsPanel = new System.Windows.Forms.Panel();
             this.effectivePriceCurrencyNumericUpDown = new Plutus.CustomControls.CurrencyNumericUpDown();
             this.originalPriceCurrencyNumericUpDown = new Plutus.CustomControls.CurrencyNumericUpDown();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.step1GroupBox.SuspendLayout();
             this.step2GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.effectivePriceCurrencyNumericUpDown)).BeginInit();
@@ -52,6 +52,7 @@
             // 
             // step1GroupBox
             // 
+            this.step1GroupBox.Controls.Add(this.effectiveCurrencyComboBox);
             this.step1GroupBox.Controls.Add(this.label5);
             this.step1GroupBox.Controls.Add(this.label4);
             this.step1GroupBox.Controls.Add(this.label3);
@@ -61,8 +62,7 @@
             this.step1GroupBox.Controls.Add(this.quickDescriptionTextBox);
             this.step1GroupBox.Controls.Add(this.effectivePriceCurrencyNumericUpDown);
             this.step1GroupBox.Controls.Add(this.originalPriceCurrencyNumericUpDown);
-            this.step1GroupBox.Controls.Add(this.label1);
-            this.step1GroupBox.Controls.Add(this.currencyComboBox);
+            this.step1GroupBox.Controls.Add(this.originalCurrencyComboBox);
             this.step1GroupBox.Location = new System.Drawing.Point(13, 13);
             this.step1GroupBox.Name = "step1GroupBox";
             this.step1GroupBox.Size = new System.Drawing.Size(325, 346);
@@ -112,7 +112,7 @@
             this.nextButton.Location = new System.Drawing.Point(6, 314);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(313, 23);
-            this.nextButton.TabIndex = 7;
+            this.nextButton.TabIndex = 4;
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
@@ -123,42 +123,33 @@
             this.additionalInfoTextBox.Multiline = true;
             this.additionalInfoTextBox.Name = "additionalInfoTextBox";
             this.additionalInfoTextBox.Size = new System.Drawing.Size(211, 163);
-            this.additionalInfoTextBox.TabIndex = 6;
+            this.additionalInfoTextBox.TabIndex = 3;
             // 
             // quickDescriptionTextBox
             // 
             this.quickDescriptionTextBox.Location = new System.Drawing.Point(98, 111);
             this.quickDescriptionTextBox.Name = "quickDescriptionTextBox";
             this.quickDescriptionTextBox.Size = new System.Drawing.Size(107, 20);
-            this.quickDescriptionTextBox.TabIndex = 5;
+            this.quickDescriptionTextBox.TabIndex = 2;
             this.quickDescriptionTextBox.TextChanged += new System.EventHandler(this.purchaseDescriptionChanged);
             // 
-            // label1
+            // originalCurrencyComboBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Currency";
-            // 
-            // currencyComboBox
-            // 
-            this.currencyComboBox.FormattingEnabled = true;
-            this.currencyComboBox.Items.AddRange(new object[] {
+            this.originalCurrencyComboBox.FormattingEnabled = true;
+            this.originalCurrencyComboBox.Items.AddRange(new object[] {
             "DKK",
             "EUR",
             "GBP",
             "USD"});
-            this.currencyComboBox.Location = new System.Drawing.Point(98, 30);
-            this.currencyComboBox.Name = "currencyComboBox";
-            this.currencyComboBox.Size = new System.Drawing.Size(107, 21);
-            this.currencyComboBox.TabIndex = 0;
-            this.currencyComboBox.SelectedIndexChanged += new System.EventHandler(this.currencyComboBox_SelectedIndexChanged);
+            this.originalCurrencyComboBox.Location = new System.Drawing.Point(211, 57);
+            this.originalCurrencyComboBox.Name = "originalCurrencyComboBox";
+            this.originalCurrencyComboBox.Size = new System.Drawing.Size(98, 21);
+            this.originalCurrencyComboBox.TabIndex = 0;
+            this.originalCurrencyComboBox.SelectedIndexChanged += new System.EventHandler(this.currencyComboBox_SelectedIndexChanged);
             // 
             // step2GroupBox
             // 
-            this.step2GroupBox.Controls.Add(this.checkedListBox1);
+            this.step2GroupBox.Controls.Add(this.availableAccountsPanel);
             this.step2GroupBox.Controls.Add(this.backButton);
             this.step2GroupBox.Controls.Add(this.doneButton);
             this.step2GroupBox.Location = new System.Drawing.Point(344, 13);
@@ -186,6 +177,30 @@
             this.doneButton.TabIndex = 12;
             this.doneButton.Text = "Done";
             this.doneButton.UseVisualStyleBackColor = true;
+            this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
+            // 
+            // effectiveCurrencyComboBox
+            // 
+            this.effectiveCurrencyComboBox.FormattingEnabled = true;
+            this.effectiveCurrencyComboBox.Items.AddRange(new object[] {
+            "DKK",
+            "EUR",
+            "GBP",
+            "USD"});
+            this.effectiveCurrencyComboBox.Location = new System.Drawing.Point(211, 84);
+            this.effectiveCurrencyComboBox.Name = "effectiveCurrencyComboBox";
+            this.effectiveCurrencyComboBox.Size = new System.Drawing.Size(98, 21);
+            this.effectiveCurrencyComboBox.TabIndex = 12;
+            this.effectiveCurrencyComboBox.SelectedIndexChanged += new System.EventHandler(this.currencyComboBox_SelectedIndexChanged);
+            // 
+            // availableAccountsPanel
+            // 
+            this.availableAccountsPanel.AutoScroll = true;
+            this.availableAccountsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.availableAccountsPanel.Location = new System.Drawing.Point(6, 64);
+            this.availableAccountsPanel.Name = "availableAccountsPanel";
+            this.availableAccountsPanel.Size = new System.Drawing.Size(313, 199);
+            this.availableAccountsPanel.TabIndex = 15;
             // 
             // effectivePriceCurrencyNumericUpDown
             // 
@@ -193,7 +208,7 @@
             this.effectivePriceCurrencyNumericUpDown.Location = new System.Drawing.Point(98, 84);
             this.effectivePriceCurrencyNumericUpDown.Name = "effectivePriceCurrencyNumericUpDown";
             this.effectivePriceCurrencyNumericUpDown.Size = new System.Drawing.Size(107, 20);
-            this.effectivePriceCurrencyNumericUpDown.TabIndex = 4;
+            this.effectivePriceCurrencyNumericUpDown.TabIndex = 1;
             // 
             // originalPriceCurrencyNumericUpDown
             // 
@@ -201,15 +216,7 @@
             this.originalPriceCurrencyNumericUpDown.Location = new System.Drawing.Point(98, 58);
             this.originalPriceCurrencyNumericUpDown.Name = "originalPriceCurrencyNumericUpDown";
             this.originalPriceCurrencyNumericUpDown.Size = new System.Drawing.Size(107, 20);
-            this.originalPriceCurrencyNumericUpDown.TabIndex = 3;
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(21, 60);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
-            this.checkedListBox1.TabIndex = 14;
+            this.originalPriceCurrencyNumericUpDown.TabIndex = 0;
             // 
             // AddPurchase
             // 
@@ -234,8 +241,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox step1GroupBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox currencyComboBox;
+        private System.Windows.Forms.ComboBox originalCurrencyComboBox;
         private System.Windows.Forms.GroupBox step2GroupBox;
         private CustomControls.CurrencyNumericUpDown originalPriceCurrencyNumericUpDown;
         private CustomControls.CurrencyNumericUpDown effectivePriceCurrencyNumericUpDown;
@@ -248,7 +254,8 @@
         private System.Windows.Forms.TextBox quickDescriptionTextBox;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button doneButton;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.ComboBox effectiveCurrencyComboBox;
+        private System.Windows.Forms.Panel availableAccountsPanel;
 
     }
 }
