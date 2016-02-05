@@ -36,6 +36,7 @@
             this.EditBillsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewPurchaseButton = new System.Windows.Forms.Button();
+            this.addNewBalanceTransferButton = new System.Windows.Forms.Button();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,19 +100,30 @@
             // 
             // addNewPurchaseButton
             // 
-            this.addNewPurchaseButton.Location = new System.Drawing.Point(12, 36);
+            this.addNewPurchaseButton.Location = new System.Drawing.Point(12, 42);
             this.addNewPurchaseButton.Name = "addNewPurchaseButton";
-            this.addNewPurchaseButton.Size = new System.Drawing.Size(124, 79);
+            this.addNewPurchaseButton.Size = new System.Drawing.Size(153, 87);
             this.addNewPurchaseButton.TabIndex = 1;
             this.addNewPurchaseButton.Text = "Add New Purchase";
             this.addNewPurchaseButton.UseVisualStyleBackColor = true;
             this.addNewPurchaseButton.Click += new System.EventHandler(this.addNewPurchaseButton_Click);
+            // 
+            // addNewBalanceTransferButton
+            // 
+            this.addNewBalanceTransferButton.Location = new System.Drawing.Point(12, 135);
+            this.addNewBalanceTransferButton.Name = "addNewBalanceTransferButton";
+            this.addNewBalanceTransferButton.Size = new System.Drawing.Size(153, 87);
+            this.addNewBalanceTransferButton.TabIndex = 2;
+            this.addNewBalanceTransferButton.Text = "Add New Balance Transfer";
+            this.addNewBalanceTransferButton.UseVisualStyleBackColor = true;
+            this.addNewBalanceTransferButton.Click += new System.EventHandler(this.addNewBalanceTransferButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 476);
+            this.Controls.Add(this.addNewBalanceTransferButton);
             this.Controls.Add(this.addNewPurchaseButton);
             this.Controls.Add(this.MainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -137,6 +149,7 @@
         private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditBillsMenuItem;
         private System.Windows.Forms.Button addNewPurchaseButton;
+        private System.Windows.Forms.Button addNewBalanceTransferButton;
 
     }
 }

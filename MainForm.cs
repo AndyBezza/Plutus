@@ -57,6 +57,9 @@ namespace Plutus
 
             Enabled = true;
             formToShow.Dispose();
+
+            addNewPurchaseButton.Enabled = _dam.ActiveAccounts.Count > 0;
+            addNewBalanceTransferButton.Enabled = _dam.ActiveAccounts.Count > 1; 
         }
 
         private void addNewPurchaseButton_Click(object sender, EventArgs e)
@@ -64,5 +67,9 @@ namespace Plutus
             ShowDialogForm(new AddPurchase(_dam)); 
         }
 
+        private void addNewBalanceTransferButton_Click(object sender, EventArgs e)
+        {
+            ShowDialogForm(new AddBalanceTransfer(_dam)); 
+        }
     }
 }

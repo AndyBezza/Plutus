@@ -33,20 +33,8 @@ namespace Plutus.DAL
 
         private void LoadXML()
         {
-            bool success = true; 
-            bool finished = false;
-
-            do
-            {
-                LoadAccounts();
-                LoadPurchases();
-                finished = true;
-            }
-            while (!finished && success); 
-            if (!success)
-            {
-                MessageBox.Show("Problem.."); 
-            }
+            LoadAccounts();
+            LoadPurchases();
         }
 
         public void LoadAccounts()
@@ -62,6 +50,11 @@ namespace Plutus.DAL
         public void SaveAccounts()
         {
             SerializeObject<List<Account>>(accounts, (driveLetter + xMLFolderLocation + accountsFileName));
+        }
+
+        public void SavePurchases()
+        {
+            SerializeObject<List<Purchase>>(purchases, (driveLetter + xMLFolderLocation + purchasesFileName));
         }
 
         public void SerializeObject<T>(T serializableObject, string fileName)
@@ -128,6 +121,13 @@ namespace Plutus.DAL
             accounts.Add(new Account(accounts.Count, 0M, 0M, "New Account...", "New Account Description", true, Currency.GBP)); 
         }
 
+        internal int CreateNewPurchase(decimal originalPrice, Currency originalCurrency, decimal effectivePrice, Currency effectiveCurrency, string quickDescription, string additionalInformation, bool spreadOverMonth, List<AccountChange> accountChanges)
+        {
+            purchases.Add(new Purchase(purchases.Count(), originalPrice, originalCurrency, effectivePrice, effectiveCurrency, quickDescription, additionalInformation, spreadOverMonth, accountChanges));
+            SavePurchases();
+            return purchases.Count - 1; 
+        }
+
         internal Account FindAccountByName(string accountName)
         {
             foreach (Account acc in accounts)
@@ -153,6 +153,22 @@ namespace Plutus.DAL
             }
 
             return returnList;
+        }
+
+        public List<Account> ActiveAccounts 
+        { 
+            get
+            {
+                List<Account> returnList = new List<Account>();
+                foreach(Account acc in accounts)
+                {
+                    if (acc._isActive)
+                    {
+                        returnList.Add(acc);
+                    }
+                }
+                return returnList;
+            }
         }
     }
 }

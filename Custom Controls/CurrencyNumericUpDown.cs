@@ -12,7 +12,15 @@ namespace Plutus.CustomControls
     class CurrencyNumericUpDown : NumericUpDown
     {
         private Currency _displayCurrency;
-        private bool _started;
+
+        public CurrencyNumericUpDown()
+        {
+            Value = 0;
+            Minimum = -10000;
+            Maximum = 10000;
+            DecimalPlaces = 2;
+            DisplayCurrency = Currency.GBP;
+        }
 
         public Currency DisplayCurrency
         {
@@ -26,6 +34,13 @@ namespace Plutus.CustomControls
                 UpdateEditText();
             }
         }
+
+        protected override void OnClick(EventArgs e)
+        {
+            Select(0, Text.Length); 
+            base.OnClick(e);
+        }
+       
 
         protected override void UpdateEditText()
         {

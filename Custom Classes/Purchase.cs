@@ -8,26 +8,26 @@ namespace Plutus.CustomClasses
 {
     public class Purchase
     {
-        private int                     _iD;
+        public int                  _iD;
 
-        private DateTime                _dateTime;
-                               
-        private decimal                 _originalPrice;
-        private Currency                _originalCurrency;
-        private decimal                 _effectivePrice;
-        private Currency                _effectiveCurrency;
-        private string                  _quickDescription;
-        private string                  _additionalInformation;
-        private bool                    _spreadOverMonth;
-        private List<AccountChange>     _accountChanges; 
+        public DateTime             _dateTime;
+
+        public decimal              _originalPrice;
+        public Currency             _originalCurrency;
+        public decimal              _effectivePrice;
+        public Currency             _effectiveCurrency;
+        public String               _quickDescription;
+        public String               _additionalInformation;
+        public bool                 _spreadOverMonth;
+        public List<AccountChange>  _accountChanges; 
         
         public Purchase(int                 iD,
                         decimal             originalPrice,
                         Currency            originalCurrency,
                         decimal             effectivePrice,
                         Currency            effectiveCurrency,
-                        string              quickDescription,
-                        string              additionalInformation,
+                        String              quickDescription,
+                        String              additionalInformation,
                         bool                spreadOverMonth, 
                         List<AccountChange> accountChanges)
         {
